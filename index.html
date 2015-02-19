@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>ShouldPHP documentation by GabrielJMJ</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>ShouldPHP documentation</h1>
+          <h2>The ShouldPHP documentation</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/GabrielJMJ/shouldphp-doc/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/GabrielJMJ/shouldphp-doc/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/GabrielJMJ/shouldphp-doc" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h2>
+<a id="index" class="anchor" href="#index" aria-hidden="true"><span class="octicon octicon-link"></span></a>Index</h2>
+
+<ul>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#basic-requirements">Basic requirements</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#instalation">Instalation</a></li>
+<li>
+<a href="http://gabrieljmj.github.io/shouldphp-doc#how-it-works">How it works?</a>
+
+<ul>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#creating-an-ambient">Creating an ambient</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#creating-an-assertion">Creating an assertion</a></li>
+</ul>
+</li>
+<li>
+<a href="http://gabrieljmj.github.io/shouldphp-doc#assertions">Assertions</a>
+
+<ul>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#assertions-for-classes-and-objects">Assertions for classes and objects</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#assertions-for-methods">Assertions for methods</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#assertions-for-properties">Assertions for properties</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#assertions-for-methods-parameters">Assertions for methods parameters</a></li>
+</ul>
+</li>
+<li>
+<a href="http://gabrieljmj.github.io/shouldphp-doc#options">Options</a>
+
+<ul>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#visibility">Visibility</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#type-hinting">Type Hinting</a></li>
+</ul>
+</li>
+<li>
+<a href="http://gabrieljmj.github.io/shouldphp-doc#executing-tests">Executing tests</a>
+
+<ul>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#shouldjson">should.json</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#explaining-by-the-example">Explaining by the example</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#saving-the-report-logs">Saving the report logs</a></li>
+<li><a href="http://gabrieljmj.github.io/shouldphp-doc#showing-the-report-with-console-colors">Showing the report with console colors</a></li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="basic-requirements" class="anchor" href="#basic-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic requirements</h2>
+
+<p>To use <strong>ShouldPHP</strong> you must have this requirements:</p>
+
+<ul>
+<li>PHP &gt;= 5.5</li>
+</ul>
+
+<h2>
+<a id="instalation" class="anchor" href="#instalation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalation</h2>
+
+<p>You can install <strong>ShouldPHP</strong> via <a href="https://getcomposer.org">Composer</a>. If you don't know how to use Composer, enter in their <a href="https://getcomposer.org/doc/">documentation</a> or read this good <a href="http://code.tutsplus.com/tutorials/easy-package-management-with-composer--net-25530">intruduction/tutorial</a>.
+After that, put this package in your requirements:</p>
+
+<div class="highlight highlight-json"><pre><span class="pl-s1"><span class="pl-pds">"</span>gabrieljmj/should-php<span class="pl-pds">"</span></span>: <span class="pl-s1"><span class="pl-pds">"</span>1.0.*@dev<span class="pl-pds">"</span></span></pre></div>
+
+<h2>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span class="octicon octicon-link"></span></a>How it works?</h2>
+
+<p>The tests are written with a simple syntax, easy to understand, based in "<em>should</em>". Basically "<em>should be</em>" and "<em>should have</em>". You can test classes, objects, methods, methods arguments and properties.</p>
+
+<h3>
+<a id="creating-an-ambient" class="anchor" href="#creating-an-ambient" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an ambient</h3>
+
+<p>Ambient in <strong>ShouldPHP</strong> are basically test suites. To create a standard ambient you have to instaciate the class <code>Gabrieljmj\Should\Ambient\Ambient</code>. Like that, simply:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">Gabrieljmj\Should\Ambient\Ambient</span>;</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-vo">$ambient</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">Ambient</span>(<span class="pl-s1"><span class="pl-pds">'</span>my_ambient<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<p>and have as return in the file the instance:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-vo">$ambient</span><span class="pl-k">-&gt;</span>theClass(<span class="pl-s1"><span class="pl-pds">'</span>Foo<span class="pl-pds">'</span></span>)<span class="pl-k">-&gt;</span><span class="pl-vo">should</span><span class="pl-k">-&gt;</span><span class="pl-vo">be</span><span class="pl-k">-&gt;</span>instance(<span class="pl-s1"><span class="pl-pds">'</span>Bar<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s2"><span class="pl-k">return</span> <span class="pl-vo">$ambient</span>;</span></pre></div>
+
+<p>You can also create ambients objects extending <code>Gabrieljmj\Should\Ambient\Ambient</code>. It will provides to you all assertion types methods. Each test from ambient must have the preffix <code>test</code>.</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">Gabrieljmj\Should\Ambient\Ambient</span>;</span>
+<span class="pl-s2"><span class="pl-k">use</span> <span class="pl-s3">MyApp\User</span>;</span>
+<span class="pl-s2"></span>
+<span class="pl-s2"><span class="pl-st">class</span> <span class="pl-en">UserAmbient</span> <span class="pl-s">extends</span> <span class="pl-e">Ambient</span></span>
+<span class="pl-s2">{</span>
+<span class="pl-s2">    <span class="pl-s">public</span> <span class="pl-st">function</span> <span class="pl-en">testIfTheGetterForNameReturnsTheCorrectValue</span>()</span>
+<span class="pl-s2">    {</span>
+<span class="pl-s2">        <span class="pl-vo">$name</span> <span class="pl-k">=</span> <span class="pl-s1"><span class="pl-pds">'</span>Gabriel<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s2">        <span class="pl-vo">$user</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-s3">User</span>();</span>
+<span class="pl-s2">        <span class="pl-vo">$user</span><span class="pl-k">-&gt;</span>setName(<span class="pl-vo">$name</span>);</span>
+<span class="pl-s2"></span>
+<span class="pl-s2">        <span class="pl-vo">$this</span><span class="pl-k">-&gt;</span>theMethod(<span class="pl-vo">$user</span>, <span class="pl-s1"><span class="pl-pds">'</span>getName<span class="pl-pds">'</span></span>)<span class="pl-k">-&gt;</span><span class="pl-vo">should</span><span class="pl-k">-&gt;</span><span class="pl-vo">have</span><span class="pl-k">-&gt;</span>asReturn(<span class="pl-vo">$name</span>);</span>
+<span class="pl-s2">    }</span>
+<span class="pl-s2">}</span></pre></div>
+
+<h3>
+<a id="creating-an-assertion" class="anchor" href="#creating-an-assertion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an assertion</h3>
+
+<p>All the assertions types are provided by an ambient. You can see an example here:</p>
+
+<div class="highlight highlight-php"><pre><span class="pl-s2"><span class="pl-vo">$ambient</span><span class="pl-k">-&gt;</span>theClass(<span class="pl-s1"><span class="pl-pds">'</span>Foo<span class="pl-pds">'</span></span>)<span class="pl-k">-&gt;</span><span class="pl-vo">should</span><span class="pl-k">-&gt;</span><span class="pl-vo">have</span><span class="pl-k">-&gt;</span>theProperty(<span class="pl-s1"><span class="pl-pds">'</span>bar<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<table>
+<thead>
+<tr>
+<th align="left">Ambient method</th>
+<th align="left">Arguments</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Ambient::theClass</code></td>
+<td align="left"><code>$class</code></td>
+<td align="left">Provides assertions for classes and objects.</td>
+</tr>
+<tr>
+<td align="left"><code>Ambient::theMethod</code></td>
+<td align="left"><code>$class, $method</code></td>
+<td align="left">Provides assertions for classes methods.</td>
+</tr>
+<tr>
+<td align="left"><code>Ambient::theParameter</code></td>
+<td align="left"><code>$class, $method, $parameter</code></td>
+<td align="left">Provides assertions for methods parameters.</td>
+</tr>
+<tr>
+<td align="left"><code>Ambient::theProperty</code></td>
+<td align="left"><code>$class, $property</code></td>
+<td align="left">Provies assertions for classes/objects properties.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="assertions" class="anchor" href="#assertions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions</h2>
+
+<h3>
+<a id="assertions-for-classes-and-objects" class="anchor" href="#assertions-for-classes-and-objects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions for classes and objects</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Assert</th>
+<th align="left">Arguments</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<em>be</em>.equal</td>
+<td align="left"><code>object $class[, $message = null]</code></td>
+<td align="left">Tests if an object is equal another.</td>
+</tr>
+<tr>
+<td align="left">
+<em>be</em>.instance</td>
+<td align="left"><code>$class[, $message = null]</code></td>
+<td align="left">Tests if a object is of the a class or has this class as one of its parents.</td>
+</tr>
+<tr>
+<td align="left">
+<em>have</em>.theProperty</td>
+<td align="left"><code>$property[, $message = null]</code></td>
+<td align="left">Tests if a class has certain property.</td>
+</tr>
+<tr>
+<td align="left">
+<em>have</em>.theMethod</td>
+<td align="left"><code>$method[, $message = null]</code></td>
+<td align="left">Tests if a class has certain method.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="assertions-for-methods" class="anchor" href="#assertions-for-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions for methods</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Assert</th>
+<th align="left">Arguments</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<em>be</em>.visible</td>
+<td align="left"><code>$as[, $message = null]</code></td>
+<td align="left">Tests if the visibility is the same as the determined. Is recommended to use the constants of <code>Gabrieljmj\Should\Options\Visibility</code>. Check it <a href="https://github.com/GabrielJMJ/ShouldPHP/wiki/Documentation#visibility">here</a>.</td>
+</tr>
+<tr>
+<td align="left">
+<em>have</em>.argumentsEqual</td>
+<td align="left"><code>array $args[, $message = null]</code></td>
+<td align="left">Tests if the arguments of the method are equal expected.</td>
+</tr>
+<tr>
+<td align="left">
+<em>have</em>.asReturn</td>
+<td align="left"><code>$return, array $args[, $message = null]</code></td>
+<td align="left">Tests if the return of a method is equal expected.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="assertions-for-properties" class="anchor" href="#assertions-for-properties" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions for properties</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Assert</th>
+<th align="left">Arguments</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<em>be</em>.equal</td>
+<td align="left"><code>$value[, $message = null]</code></td>
+<td align="left">Tests if a class has a property with a certain value. If the property is not public, the default value will be used.</td>
+</tr>
+<tr>
+<td align="left">
+<em>be</em>.visible</td>
+<td align="left"><code>$as[, $message = null]</code></td>
+<td align="left">Tests if the visibility is the same as the determined. Is recommended to use the constants of <code>Gabrieljmj\Should\Options\Visibility</code>. Check it <a href="https://github.com/GabrielJMJ/ShouldPHP/wiki/Documentation#visibility">here</a>.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="assertions-for-methods-parameters" class="anchor" href="#assertions-for-methods-parameters" aria-hidden="true"><span class="octicon octicon-link"></span></a>Assertions for methods parameters</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Assert</th>
+<th align="left">Arguments</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">
+<em>have</em>.acceptOnly</td>
+<td align="left"><code>$type[, $message = null]</code></td>
+<td align="left">Tests if certain parameter accept determined value type. Recommended to use the contants of <code>Gabrieljmj\Should\Options\TypeHinting</code>. Check it <a href="https://github.com/GabrielJMJ/ShouldPHP/wiki/Documentation#type-hinting">here</a>
+</td>
+</tr>
+<tr>
+<td align="left">
+<em>have</em>.asDefaultValue</td>
+<td align="left"><code>$value[, $message = null]</code></td>
+<td align="left">Tests if certain parameter of a method has the default value equals determined one.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<h3>
+<a id="visibility" class="anchor" href="#visibility" aria-hidden="true"><span class="octicon octicon-link"></span></a>Visibility</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Constant</th>
+<th align="left">What means?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>Visibility::AS_PUBLIC</code></td>
+<td align="left">Public visibility</td>
+</tr>
+<tr>
+<td align="left"><code>Visibility::AS_PROTECTED</code></td>
+<td align="left">Protected visibility</td>
+</tr>
+<tr>
+<td align="left"><code>Visibility::AS_PRIVATE</code></td>
+<td align="left">Private visibility</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="type-hinting" class="anchor" href="#type-hinting" aria-hidden="true"><span class="octicon octicon-link"></span></a>Type Hinting</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">Constant</th>
+<th align="left">What means?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>TypeHinting::ARR</code></td>
+<td align="left">Array type</td>
+</tr>
+<tr>
+<td align="left"><code>TypeHinting::CALL</code></td>
+<td align="left">Callable type</td>
+</tr>
+<tr>
+<td align="left"><code>TypeHinting::VARIADIC</code></td>
+<td align="left">Variadic type</td>
+</tr>
+<tr>
+<td align="left"><code>TypeHinting::INSTANCE_OF</code></td>
+<td align="left">Instance of some class or interface determined by the static method <code>TypeHinting::anInstanceOf($class)</code>.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="executing-tests" class="anchor" href="#executing-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Executing tests</h2>
+
+<p>The execetion of all tests are made with a console command. After executing, in the console will appear a little report. If some test fail, the report will explain why.</p>
+
+<pre><code>php vendor/bin/should excute test.php
+</code></pre>
+
+<div><img src="http://i.imgur.com/1n9zBaP.png"></div>
+
+<p><em>Yes, I use Windows. Judge me.</em></p>
+
+<h4>
+<a id="shouldjson" class="anchor" href="#shouldjson" aria-hidden="true"><span class="octicon octicon-link"></span></a>should.json</h4>
+
+<p>The <code>should.json</code> is a collection of tests, where you can indicate what tests should be executed. The file, in the truth, may have any name, but have to be JSON and to have <code>ambients</code> index.</p>
+
+<div class="highlight highlight-json"><pre>{
+    <span class="pl-s1"><span class="pl-pds">"</span>ambients<span class="pl-pds">"</span></span>: [
+        <span class="pl-s1"><span class="pl-pds">"</span>test.php<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>Test<span class="pl-cce">\\</span>UserAmbient<span class="pl-pds">"</span></span>,
+        <span class="pl-s1"><span class="pl-pds">"</span>tests/<span class="pl-pds">"</span></span>
+    ]
+}</pre></div>
+
+<h4>
+<a id="rules" class="anchor" href="#rules" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rules</h4>
+
+<p>You can define rules for the execution tests like just test files from a directory with certain suffix or preffix. To it, indicate the rules on JSON file.</p>
+
+<div class="highlight highlight-json"><pre><span class="pl-s1"><span class="pl-pds">"</span>rules<span class="pl-pds">"</span></span>: {
+    <span class="pl-s1"><span class="pl-pds">"</span>directory<span class="pl-pds">"</span></span>: {
+        <span class="pl-s1"><span class="pl-pds">"</span>suffix<span class="pl-pds">"</span></span>: [
+            <span class="pl-s1"><span class="pl-pds">"</span>Test.php<span class="pl-pds">"</span></span>
+        ]
+    }
+}</pre></div>
+
+<h4>
+<a id="rules-list" class="anchor" href="#rules-list" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rules list</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left">Rule</th>
+<th align="left">Category</th>
+<th align="left">What means?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Suffix</td>
+<td align="left">Directory</td>
+<td align="left">Execute all ambient files with determined suffix in the name.</td>
+</tr>
+<tr>
+<td align="left">Preffix</td>
+<td align="left">Directory</td>
+<td align="left">Execute all ambient files with determined preffix in the name.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Console:</strong></p>
+
+<div class="highlight highlight-console"><pre><span class="pl-mo">php vendor/bin/should execute should.json</span></pre></div>
+
+<h4>
+<a id="explaining-by-the-example" class="anchor" href="#explaining-by-the-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Explaining by the example</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left">Local</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>test.php</code></td>
+<td align="left">Executes a file that return an instance of an ambient.</td>
+</tr>
+<tr>
+<td align="left"><code>Test\\UserAmbient</code></td>
+<td align="left">Executes all test methods from an ambient custom object. In the console you must to use <code>/</code> instead <code>\</code>. Like that: <code>php vendor/bin/should excute Test/Ambient</code>.</td>
+</tr>
+<tr>
+<td align="left"><code>tests/</code></td>
+<td align="left">Executes all ambient files of a directory. You must to put <code>/</code> in the end of the directory name both console and JSON.</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="saving-the-report-logs" class="anchor" href="#saving-the-report-logs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Saving the report logs</h3>
+
+<p>To save the report logs, add the option <code>-s|--save</code>to the execution follow by the logs file:</p>
+
+<div class="highlight highlight-console"><pre><span class="pl-mo">php vendor/bin/should execute should.json -s "tests.log"</span></pre></div>
+
+<h3>
+<a id="showing-the-report-with-console-colors" class="anchor" href="#showing-the-report-with-console-colors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Showing the report with console colors</h3>
+
+<p>Add the option <code>-c|--colors</code>:</p>
+
+<div class="highlight highlight-console"><pre><span class="pl-mo">php vendor/bin/should execute should.json -c</span></pre></div>
+        </section>
+
+        <footer>
+          ShouldPHP documentation is maintained by <a href="https://github.com/GabrielJMJ">GabrielJMJ</a><br>
+          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
